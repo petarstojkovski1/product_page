@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -27,9 +28,14 @@ module.exports = {
         exclude: /node_modules/,
         use: "babel-loader",
       },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
+    new TsconfigPathsPlugin({ configFile: "./jsconfig.json" }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),
