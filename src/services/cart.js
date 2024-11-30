@@ -8,10 +8,12 @@ export const fetchCart = () => {
   });
 };
 
-export const addToCart = ({ item, count }) => {
+export const addToCart = ({ id, quantity }) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ item, count });
+      //We would normally send a request to the server to add the item to the cart
+      //and get the updated cart data in response.
+      resolve({ quantity, cost: product.article.price * quantity, id });
     }, 500);
   });
 };
