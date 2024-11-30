@@ -4,6 +4,7 @@ import { fetchCart, addToCart as addToCartService } from '../../services/cart';
 const initialState = {
   totalCost: 0,
   totalItems: 0,
+  loading: false,
 };
 
 export const getCart = createAsyncThunk('cart/getCart', async () => {
@@ -19,13 +20,6 @@ export const addToCart = createAsyncThunk('cart/addToCart', async (payload) => {
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {
-    addItem: (state, action) => {
-      state.totalItems += 1;
-      state.totalCost += action.payload.price;
-      state.items.push(action.payload);
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(getCart.fulfilled, (state, action) => {
@@ -37,8 +31,9 @@ const cartSlice = createSlice({
         state.loading = true;
       })
       .addCase(addToCart.fulfilled, (state, action) => {
-        state.totalItems += action.payload.quantity;
+        state.totalItems += Number(action.payload.quantity);
         state.totalCost += action.payload.cost;
+        state.loading = false;
       });
   },
 });
