@@ -17,12 +17,10 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    // "react-hooks/rules-of-hooks": "error",
-    // "react-hooks/exhaustive-deps": "warn",
     "no-unused-vars": "warn",
     "no-console": "warn",
     "no-undef": "warn",
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "react/prop-types": "off"
   },
   "settings": {

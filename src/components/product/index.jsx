@@ -32,7 +32,7 @@ const App = () => {
       ([entry]) => {
         setIsAddToCartVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 }
+      { threshold: 1 }
     );
 
     if (addToCartRef.current) {
@@ -60,14 +60,17 @@ const App = () => {
         isAddToCartVisible={isAddToCartVisible}
       />
       <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Gallery images={article?.images} />
         </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <Box
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
+            height="100%"
+            py={1}
+            pl={{ xs: 2, md: 0 }}
           >
             <Box>
               <Typography
