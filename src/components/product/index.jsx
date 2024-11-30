@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid2";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid2';
 
-import Details from "../sections/details";
-import Description from "../sections/description";
-import PricingShipping from "../sections/pricing-shipping";
-import { useDispatch, useSelector } from "react-redux";
+import Details from '../sections/details';
+import Description from '../sections/description';
+import PricingShipping from '../sections/pricing-shipping';
+import { useDispatch, useSelector } from 'react-redux';
 
 const App = () => {
   const article = useSelector((state) => state.article.article);
@@ -15,8 +15,12 @@ const App = () => {
   return (
     <>
       <p>Product</p>
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12, md: 6 }}>Gallery</Grid>
+        <Grid size={{ xs: 12, md: 6 }}> Data</Grid>
+      </Grid>
 
-      <Box bgcolor={(theme) => theme.palette.grey["300"]} p={2}>
+      <Box bgcolor={(theme) => theme.palette.grey['300']} p={2}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 10 }}>
             <Description description={article?.description_long} />

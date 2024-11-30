@@ -1,43 +1,43 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.js",
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, './dist'),
+    filename: 'bundle.js',
   },
-  target: "web",
+  target: 'web',
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, 'public'),
     },
     open: true,
     hot: true,
     liveReload: true,
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },
   plugins: [
-    new TsconfigPathsPlugin({ configFile: "./jsconfig.json" }),
+    new TsconfigPathsPlugin({ configFile: './jsconfig.json' }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "public", "index.html"),
+      template: path.join(__dirname, 'public', 'index.html'),
     }),
   ],
 };

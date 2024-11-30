@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import Grid from '@mui/material/Grid2';
 
 const PricingShipping = ({
   priceBreaks,
@@ -21,7 +22,7 @@ const PricingShipping = ({
   transportCosts,
 }) => {
   return (
-    <Box bgcolor={(theme) => theme.palette.grey["100"]} p={2} height="100%">
+    <Box bgcolor={(theme) => theme.palette.grey['100']} p={2} height="100%">
       <Box>
         <Typography color="primary" textTransform="uppercase">
           Pricing & Shipping
@@ -30,9 +31,9 @@ const PricingShipping = ({
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="space-between">
         <Box>
-          <List sx={{ listStyleType: "disc", pl: 2 }} disablePadding dense>
+          <List sx={{ listStyleType: 'disc', pl: 2 }} disablePadding dense>
             <ListItem
-              sx={{ display: "list-item", m: 0, p: 0 }}
+              sx={{ display: 'list-item', m: 0, p: 0 }}
               disableGutters
               dense
             >
@@ -44,7 +45,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
+                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
                     >
                       Minimum order:
                     </Typography>
@@ -61,7 +62,7 @@ const PricingShipping = ({
               />
             </ListItem>
             <ListItem
-              sx={{ display: "list-item", m: 0, p: 0 }}
+              sx={{ display: 'list-item', m: 0, p: 0 }}
               disableGutters
               dense
             >
@@ -73,7 +74,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
+                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
                     >
                       Shipping:
                     </Typography>
@@ -90,7 +91,7 @@ const PricingShipping = ({
               />
             </ListItem>
             <ListItem
-              sx={{ display: "list-item", m: 0, p: 0 }}
+              sx={{ display: 'list-item', m: 0, p: 0 }}
               disableGutters
               dense
             >
@@ -102,7 +103,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
+                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
                     >
                       Delivery:
                     </Typography>
@@ -112,7 +113,7 @@ const PricingShipping = ({
                       ml={1}
                       fontWeight="bold"
                     >
-                      {`${deliveryTime} ${deliveryTime > 1 ? "days" : "day"}`}
+                      {`${deliveryTime} ${deliveryTime > 1 ? 'days' : 'day'}`}
                     </Typography>
                   </>
                 }
@@ -124,31 +125,40 @@ const PricingShipping = ({
         {priceBreaks && Object.keys(priceBreaks).length > 0 ? (
           <Box>
             <Typography
-              sx={(theme) => ({ color: theme.palette.grey["500"] })}
+              sx={(theme) => ({ color: theme.palette.grey['500'] })}
               gutterBottom
               mt={2}
             >
               Price Breaks
             </Typography>
-            <TableContainer sx={{ maxWidth: "70%" }}>
-              <Table size="small">
-                <TableBody>
-                  {Object.entries(priceBreaks).map(([key, value], index) => (
-                    <TableRow
-                      key={key}
-                      sx={
-                        index === 0
-                          ? { borderTop: "1px solid", borderColor: "grey.300" }
-                          : {}
-                      }
-                    >
-                      <TableCell>{`ex ${key} ${unit}`}</TableCell>
-                      <TableCell>{`${value} ${currency}/${unit}`}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <Grid container>
+              <Grid size={{ xs: 12, sm: 10, md: 8, lg: 6 }}>
+                <TableContainer>
+                  <Table size="small">
+                    <TableBody>
+                      {Object.entries(priceBreaks).map(
+                        ([key, value], index) => (
+                          <TableRow
+                            key={key}
+                            sx={
+                              index === 0
+                                ? {
+                                    borderTop: '1px solid',
+                                    borderColor: 'grey.300',
+                                  }
+                                : {}
+                            }
+                          >
+                            <TableCell>{`ex ${key} ${unit}`}</TableCell>
+                            <TableCell>{`${value} ${currency}/${unit}`}</TableCell>
+                          </TableRow>
+                        )
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Grid>
+            </Grid>
           </Box>
         ) : null}
       </Box>

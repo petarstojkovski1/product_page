@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchCart, addToCart as addToCartService } from "../../services/cart";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchCart, addToCart as addToCartService } from '../../services/cart';
 
 const initialState = {
   totalCost: 0,
@@ -7,18 +7,18 @@ const initialState = {
   items: [],
 };
 
-export const getCart = createAsyncThunk("cart/getCart", async () => {
+export const getCart = createAsyncThunk('cart/getCart', async () => {
   const response = await fetchCart();
   return response;
 });
 
-export const addToCart = createAsyncThunk("cart/addToCart", async (payload) => {
+export const addToCart = createAsyncThunk('cart/addToCart', async (payload) => {
   const response = await addToCartService(payload);
   return response;
 });
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addItem: (state, action) => {

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Typography from "@mui/material/Typography";
+import Typography from '@mui/material/Typography';
 
 const Description = ({ description }) => {
   return (
@@ -13,7 +13,7 @@ const Description = ({ description }) => {
       >
         Description
       </Typography>
-      {description?.split("\n").map((line, index) => (
+      {description?.split('\n').map((line, index) => (
         <Typography key={index} gutterBottom variant="body2">
           {line}
         </Typography>

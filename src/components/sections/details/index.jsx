@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import Chip from "@mui/material/Chip";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Link from "@mui/material/Link";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import Chip from '@mui/material/Chip';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Link from '@mui/material/Link';
 
-import attachmentIcon from "../../../assets/images/icons/attachment.svg";
+import attachmentIcon from '../../../assets/images/icons/attachment.svg';
 
 const Details = ({ features, attachments, keywords }) => {
   return (
-    <Box bgcolor={(theme) => theme.palette.grey["100"]} p={2} height="100%">
+    <Box bgcolor={(theme) => theme.palette.grey['100']} p={2} height="100%">
       <Box>
         <Typography color="primary" textTransform="uppercase">
           Details
@@ -23,14 +23,14 @@ const Details = ({ features, attachments, keywords }) => {
       <Box display="flex" flexDirection="column">
         {features && Object.keys(features).length > 0 ? (
           <Box>
-            <Typography sx={(theme) => ({ color: theme.palette.grey["500"] })}>
+            <Typography sx={(theme) => ({ color: theme.palette.grey['500'] })}>
               Features
             </Typography>
-            <List sx={{ listStyleType: "disc", pl: 2 }} disablePadding dense>
+            <List sx={{ listStyleType: 'disc', pl: 2 }} disablePadding dense>
               {Object.entries(features).map(([key, value]) => (
                 <ListItem
                   key={key}
-                  sx={{ display: "list-item", m: 0, p: 0 }}
+                  sx={{ display: 'list-item', m: 0, p: 0 }}
                   disableGutters
                   dense
                 >
@@ -42,7 +42,7 @@ const Details = ({ features, attachments, keywords }) => {
                         <Typography
                           component="span"
                           fontSize="14px"
-                          sx={(theme) => ({ color: theme.palette.grey["500"] })}
+                          sx={(theme) => ({ color: theme.palette.grey['500'] })}
                         >
                           {key}:
                         </Typography>
@@ -66,7 +66,7 @@ const Details = ({ features, attachments, keywords }) => {
         {attachments?.length > 0 ? (
           <Box>
             <Typography
-              sx={(theme) => ({ color: theme.palette.grey["500"] })}
+              sx={(theme) => ({ color: theme.palette.grey['500'] })}
               gutterBottom
               mt={2}
             >
@@ -77,14 +77,14 @@ const Details = ({ features, attachments, keywords }) => {
                 href={attachment.file_link}
                 download
                 key={attachment.file_name}
-                sx={{ textDecoration: "none", cursor: "pointer" }}
+                sx={{ textDecoration: 'none', cursor: 'pointer' }}
                 target="_blank"
               >
                 <Box display="flex" mb={1} alignItems="center">
                   <img
                     component="img"
                     src={attachmentIcon}
-                    style={{ width: "15px" }}
+                    style={{ width: '15px' }}
                   />
                   <Typography
                     variant="body2"
@@ -102,7 +102,7 @@ const Details = ({ features, attachments, keywords }) => {
         {keywords?.length > 0 ? (
           <Box>
             <Typography
-              sx={(theme) => ({ color: theme.palette.grey["500"] })}
+              sx={(theme) => ({ color: theme.palette.grey['500'] })}
               gutterBottom
               mt={2}
             >
@@ -114,9 +114,9 @@ const Details = ({ features, attachments, keywords }) => {
                   label={keyword}
                   key={keyword}
                   sx={(theme) => ({
-                    color: "white.main",
-                    backgroundColor: theme.palette.grey["400"],
-                    textTransform: "uppercase",
+                    color: 'white.main',
+                    backgroundColor: theme.palette.grey['400'],
+                    textTransform: 'uppercase',
                     mr: 1,
                   })}
                   size="small"

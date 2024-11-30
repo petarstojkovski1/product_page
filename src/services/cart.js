@@ -1,7 +1,7 @@
-import product from "../data/data";
+import product from '../data/data';
 
 export const fetchCart = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(product.cart);
     }, 500);
@@ -9,7 +9,7 @@ export const fetchCart = () => {
 };
 
 export const addToCart = ({ item, count }) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ item, count });
     }, 500);

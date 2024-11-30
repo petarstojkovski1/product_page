@@ -1,8 +1,7 @@
-import product from "../data/data";
+import product from '../data/data';
 
 export const fetchArticle = () => {
-  console.log("usao u fetchArticle");
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(product.article);
     }, 1000);
