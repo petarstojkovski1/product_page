@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import SvgIcon from '@mui/material/SvgIcon';
+import Grid from '@mui/material/Grid2';
 
 import { getCart } from '../../../store/cart/cartSlice';
 import { getFavorites, setFavorite } from '../../../store/user/userSlice';
@@ -62,60 +63,69 @@ const Header = ({
           display="flex"
           justifyContent="space-between"
           width="100%"
-          alignItems="center"
+          alignItems={{ xs: 'flex-start', md: 'center' }}
+          sx={{ mt: { xs: 2, md: 0 }, mb: { xs: 1, md: 0 } }}
         >
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            width="100%"
-            alignItems="center"
-            flexDirection={{ xs: 'column', md: 'row' }}
-          >
-            <Typography variant="h6" color="primary">
-              {articleName}
-            </Typography>
-            <Box
-              display="flex"
-              alignItems={{ xs: 'flex-end', md: 'center' }}
-              mr={2}
-              flexDirection={{ xs: 'column-reverse', md: 'row' }}
+          <Grid container width="100%" spacing={{ xs: 1, md: 2 }}>
+            <Grid order={1} size={{ xs: 9, md: 7 }}>
+              <Box display="flex" alignItems="center" height="100%">
+                <Typography
+                  color="primary"
+                  fontSize={{ xs: '14px', md: '20px' }}
+                >
+                  {articleName}
+                </Typography>
+              </Box>
+            </Grid>
+            {!isAddToCartVisible ? (
+              <Grid order={{ xs: 3, md: 2 }} size={{ xs: 12, md: 3 }}>
+                <AddToCart unit={unit} addToCart={addToCart} />
+              </Grid>
+            ) : null}
+
+            <Grid
+              order={{ xs: 2, md: 3 }}
+              size={{ xs: 3, md: !isAddToCartVisible ? 2 : 5 }}
             >
-              {!isAddToCartVisible ? (
-                <Box mr={4}>
-                  <AddToCart unit={unit} addToCart={addToCart} />
-                </Box>
-              ) : null}
-              <SvgIcon
-                component={
-                  favorites?.some((item) => item === articleId)
-                    ? favoriteFilledIcon
-                    : favoriteIcon
-                }
-                inheritViewBox
-                sx={(theme) => ({
-                  color: theme.palette.secondary.main,
-                  width: '25px',
-                  '&:hover': {
-                    color: theme.palette.primary.main,
-                  },
-                  transition: 'color 0.3s ease-in-out',
-                  ml: 1,
-                })}
-                onClick={() => {
-                  dispatch(setFavorite(articleId));
-                }}
-              />
-              <SvgIcon
-                component={factsSoftLogo}
-                inheritViewBox
-                sx={(theme) => ({
-                  color: theme.palette.secondary.main,
-                  width: '25px',
-                  ml: 1,
-                })}
-              />
-            </Box>
-          </Box>
+              <Box
+                display="flex"
+                alignItems={{ xs: 'flex-start', md: 'center' }}
+                justifyContent="flex-end"
+                height="100%"
+                mr={1}
+              >
+                <SvgIcon
+                  component={
+                    favorites?.some((item) => item === articleId)
+                      ? favoriteFilledIcon
+                      : favoriteIcon
+                  }
+                  inheritViewBox
+                  sx={(theme) => ({
+                    color: theme.palette.secondary.main,
+                    width: '25px',
+                    '&:hover': {
+                      color: theme.palette.primary.main,
+                    },
+                    transition: 'color 0.3s ease-in-out',
+                    ml: 1,
+                  })}
+                  onClick={() => {
+                    dispatch(setFavorite(articleId));
+                  }}
+                />
+                <SvgIcon
+                  component={factsSoftLogo}
+                  inheritViewBox
+                  sx={(theme) => ({
+                    color: theme.palette.secondary.main,
+                    width: '25px',
+                    ml: 1,
+                  })}
+                />
+              </Box>
+            </Grid>
+          </Grid>
           <Box
             position="relative"
             display="flex"

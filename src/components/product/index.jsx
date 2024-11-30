@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
@@ -20,8 +20,31 @@ import AddToCart from './addToCart';
 import { addToCart as addToCartAction } from '../../store/cart/cartSlice';
 
 const App = () => {
+  const [isAddToCartVisible, setIsAddToCartVisible] = useState(true);
+  const addToCartRef = useRef(null);
+
   const article = useSelector((state) => state.article.article);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsAddToCartVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (addToCartRef.current) {
+      observer.observe(addToCartRef.current);
+    }
+
+    return () => {
+      if (addToCartRef.current) {
+        observer.unobserve(addToCartRef.current);
+      }
+    };
+  }, []);
 
   const addItemToCart = (quantity) => {
     dispatch(addToCartAction({ id: article?.id, quantity }));
@@ -29,7 +52,13 @@ const App = () => {
 
   return (
     <>
-      <Header articleName={article?.title} articleId={article?.id} />
+      <Header
+        articleName={article?.title}
+        articleId={article?.id}
+        addToCart={addItemToCart}
+        unit={article?.unit}
+        isAddToCartVisible={isAddToCartVisible}
+      />
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Gallery images={article?.images} />
@@ -93,7 +122,7 @@ const App = () => {
                 sx={(theme) => ({ color: theme.palette.typography.main })}
               >{` all prices incl. ${article?.vat_percent}% taxes`}</Typography>
             </Box>
-            <Box>
+            <Box ref={addToCartRef}>
               <AddToCart unit={article?.unit} addToCart={addItemToCart} />
             </Box>
           </Box>

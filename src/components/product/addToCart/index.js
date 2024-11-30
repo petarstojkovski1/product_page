@@ -34,7 +34,12 @@ const AddToCart = ({ addToCart, unit }) => {
         margin="dense"
         size="small"
       />
-      <Typography component="span" variant="body2" mx={0.5}>
+      <Typography
+        component="span"
+        variant="body2"
+        mx={0.5}
+        sx={(theme) => ({ color: theme.palette.typography.dark })}
+      >
         {unit}
       </Typography>
       <Button
