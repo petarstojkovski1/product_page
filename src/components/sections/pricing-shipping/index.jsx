@@ -44,7 +44,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      color={(theme) => theme.palette.grey["500"]}
+                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
                     >
                       Minimum order:
                     </Typography>
@@ -73,7 +73,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      color={(theme) => theme.palette.grey["500"]}
+                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
                     >
                       Shipping:
                     </Typography>
@@ -102,7 +102,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      color={(theme) => theme.palette.grey["500"]}
+                      sx={(theme) => ({ color: theme.palette.grey["500"] })}
                     >
                       Delivery:
                     </Typography>
@@ -130,7 +130,7 @@ const PricingShipping = ({
             >
               Price Breaks
             </Typography>
-            <TableContainer sx={{ maxWidth: "50%" }}>
+            <TableContainer sx={{ maxWidth: "70%" }}>
               <Table size="small">
                 <TableBody>
                   {Object.entries(priceBreaks).map(([key, value], index) => (
