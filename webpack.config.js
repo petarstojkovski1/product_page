@@ -29,8 +29,9 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
-        type: 'asset/resource',
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },

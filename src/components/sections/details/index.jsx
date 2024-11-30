@@ -8,6 +8,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Link from '@mui/material/Link';
+import SvgIcon from '@mui/material/SvgIcon';
 
 import attachmentIcon from '../../../assets/images/icons/attachment.svg';
 
@@ -23,7 +24,9 @@ const Details = ({ features, attachments, keywords }) => {
       <Box display="flex" flexDirection="column">
         {features && Object.keys(features).length > 0 ? (
           <Box>
-            <Typography sx={(theme) => ({ color: theme.palette.grey['500'] })}>
+            <Typography
+              sx={(theme) => ({ color: theme.palette.typography.main })}
+            >
               Features
             </Typography>
             <List sx={{ listStyleType: 'disc', pl: 2 }} disablePadding dense>
@@ -42,7 +45,9 @@ const Details = ({ features, attachments, keywords }) => {
                         <Typography
                           component="span"
                           fontSize="14px"
-                          sx={(theme) => ({ color: theme.palette.grey['500'] })}
+                          sx={(theme) => ({
+                            color: theme.palette.typography.main,
+                          })}
                         >
                           {key}:
                         </Typography>
@@ -66,7 +71,7 @@ const Details = ({ features, attachments, keywords }) => {
         {attachments?.length > 0 ? (
           <Box>
             <Typography
-              sx={(theme) => ({ color: theme.palette.grey['500'] })}
+              sx={(theme) => ({ color: theme.palette.typography.main })}
               gutterBottom
               mt={2}
             >
@@ -81,15 +86,18 @@ const Details = ({ features, attachments, keywords }) => {
                 target="_blank"
               >
                 <Box display="flex" mb={1} alignItems="center">
-                  <img
-                    component="img"
-                    src={attachmentIcon}
-                    style={{ width: '15px' }}
+                  <SvgIcon
+                    component={attachmentIcon}
+                    inheritViewBox
+                    sx={(theme) => ({
+                      color: theme.palette.icon.main,
+                      width: '15px',
+                    })}
                   />
                   <Typography
                     variant="body2"
                     ml={1}
-                    sx={(theme) => ({ color: theme.palette.info.main })}
+                    sx={(theme) => ({ color: theme.palette.link.main })}
                   >
                     {attachment.file_label}
                   </Typography>
@@ -102,7 +110,7 @@ const Details = ({ features, attachments, keywords }) => {
         {keywords?.length > 0 ? (
           <Box>
             <Typography
-              sx={(theme) => ({ color: theme.palette.grey['500'] })}
+              sx={(theme) => ({ color: theme.palette.typography.main })}
               gutterBottom
               mt={2}
             >
@@ -114,10 +122,11 @@ const Details = ({ features, attachments, keywords }) => {
                   label={keyword}
                   key={keyword}
                   sx={(theme) => ({
-                    color: 'white.main',
+                    color: 'typography.light',
                     backgroundColor: theme.palette.grey['400'],
                     textTransform: 'uppercase',
                     mr: 1,
+                    p: 0.3,
                   })}
                   size="small"
                 />

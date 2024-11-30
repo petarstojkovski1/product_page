@@ -10,8 +10,17 @@ const theme = createTheme({
       light: '#ffffff',
       dark: '#b0b0b0',
     },
-    white: {
-      main: '#fff',
+    icon: {
+      main: '#000000',
+      yellow: '#f8c300',
+    },
+    link: {
+      main: '#11629c',
+    },
+    typography: {
+      main: '#7e7979',
+      dark: '#000000',
+      light: '#ffffff',
     },
   },
   typography: {

@@ -45,7 +45,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
+                      sx={(theme) => ({ color: theme.palette.typography.main })}
                     >
                       Minimum order:
                     </Typography>
@@ -74,7 +74,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
+                      sx={(theme) => ({ color: theme.palette.typography.main })}
                     >
                       Shipping:
                     </Typography>
@@ -103,7 +103,7 @@ const PricingShipping = ({
                     <Typography
                       component="span"
                       fontSize="14px"
-                      sx={(theme) => ({ color: theme.palette.grey['500'] })}
+                      sx={(theme) => ({ color: theme.palette.typography.main })}
                     >
                       Delivery:
                     </Typography>
