@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
@@ -11,9 +10,15 @@ import SvgIcon from '@mui/material/SvgIcon';
 
 import zoomIcon from '../../../assets/images/icons/zoom-in.svg';
 
-const Gallery = ({ images }) => {
+const Gallery = () => {
   const [activeImage, setActiveImage] = useState(null);
   const [zoomOpen, setZoomOpen] = useState(false);
+
+  const images = [
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/550',
+    'https://via.placeholder.com/400',
+  ];
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
@@ -24,7 +29,7 @@ const Gallery = ({ images }) => {
               <Grid key={index}>
                 <Box
                   component="img"
-                  src={`${process.env.PUBLIC_URL}/images/${image}`}
+                  src={image}
                   alt={`Thumbnail ${index}`}
                   sx={{
                     width: '100%',
@@ -42,7 +47,7 @@ const Gallery = ({ images }) => {
         <Grid size={{ xs: 10 }} sx={{ position: 'relative' }}>
           <Box
             component="img"
-            src={`${process.env.PUBLIC_URL}/images/${activeImage || images[0]}`}
+            src={activeImage || images[0]}
             alt="Active Image"
             sx={{
               width: '100%',
@@ -85,7 +90,7 @@ const Gallery = ({ images }) => {
         <DialogContent>
           <Box
             component="img"
-            src={`${process.env.PUBLIC_URL}/images/${activeImage || images[0]}`}
+            src={activeImage || images[0]}
             alt="Enlarged Image"
             sx={{ width: '100%', height: 'auto' }}
           />
