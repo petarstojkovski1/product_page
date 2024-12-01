@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
@@ -23,7 +24,7 @@ const Gallery = ({ images }) => {
               <Grid key={index}>
                 <Box
                   component="img"
-                  src={`/images/${image}`}
+                  src={`${process.env.PUBLIC_URL}/images/${image}`}
                   alt={`Thumbnail ${index}`}
                   sx={{
                     width: '100%',
@@ -41,7 +42,7 @@ const Gallery = ({ images }) => {
         <Grid size={{ xs: 10 }} sx={{ position: 'relative' }}>
           <Box
             component="img"
-            src={`/images/${activeImage || images[0]}`}
+            src={`${process.env.PUBLIC_URL}/images/${activeImage || images[0]}`}
             alt="Active Image"
             sx={{
               width: '100%',
@@ -84,7 +85,7 @@ const Gallery = ({ images }) => {
         <DialogContent>
           <Box
             component="img"
-            src={`/images/${activeImage || images[0]}`}
+            src={`${process.env.PUBLIC_URL}/images/${activeImage || images[0]}`}
             alt="Enlarged Image"
             sx={{ width: '100%', height: 'auto' }}
           />
