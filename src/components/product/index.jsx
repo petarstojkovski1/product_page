@@ -60,10 +60,10 @@ const App = () => {
         isAddToCartVisible={isAddToCartVisible}
       />
       <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid size={{ xs: 12, md: 5 }}>
           {article?.images.length ? <Gallery images={article?.images} /> : null}
         </Grid>
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, md: 7 }}>
           <Box
             display="flex"
             flexDirection="column"
