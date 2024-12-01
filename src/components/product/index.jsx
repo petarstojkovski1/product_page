@@ -61,7 +61,7 @@ const App = () => {
       />
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 4 }}>
-          <Gallery images={article?.images} />
+          {article?.images.length ? <Gallery images={article?.images} /> : null}
         </Grid>
         <Grid size={{ xs: 12, md: 8 }}>
           <Box

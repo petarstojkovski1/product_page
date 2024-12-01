@@ -10,15 +10,9 @@ import SvgIcon from '@mui/material/SvgIcon';
 
 import zoomIcon from '../../../assets/images/icons/zoom-in.svg';
 
-const Gallery = () => {
+const Gallery = ({ images }) => {
   const [activeImage, setActiveImage] = useState(null);
   const [zoomOpen, setZoomOpen] = useState(false);
-
-  const images = [
-    'https://via.placeholder.com/200',
-    'https://via.placeholder.com/250',
-    'https://via.placeholder.com/300',
-  ];
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
@@ -26,10 +20,10 @@ const Gallery = () => {
         <Grid size={{ xs: 2 }}>
           <Grid container direction="column" spacing={2}>
             {images.map((image, index) => (
-              <Grid item key={index}>
+              <Grid key={index}>
                 <Box
                   component="img"
-                  src={image}
+                  src={`/images/${image}`}
                   alt={`Thumbnail ${index}`}
                   sx={{
                     width: '100%',
@@ -47,25 +41,29 @@ const Gallery = () => {
         <Grid size={{ xs: 10 }} sx={{ position: 'relative' }}>
           <Box
             component="img"
-            src={activeImage || images[0]}
+            src={`/images/${activeImage || images[0]}`}
             alt="Active Image"
             sx={{
               width: '100%',
-              height: 'auto',
+              height: { xs: '200px', md: '400px' },
               cursor: 'pointer',
+              objectFit: 'cover',
             }}
             onClick={() => {
               setZoomOpen(true);
             }}
           />
           <IconButton
-            sx={{
+            sx={(theme) => ({
               position: 'absolute',
               bottom: 10,
               right: 10,
-              color: 'white',
+              backgroundColor: theme.palette.secondary.main,
               borderRadius: '50%',
-            }}
+              '&:hover': {
+                backgroundColor: theme.palette.primary.main,
+              },
+            })}
             onClick={() => {
               setZoomOpen(true);
             }}
@@ -86,7 +84,7 @@ const Gallery = () => {
         <DialogContent>
           <Box
             component="img"
-            src={activeImage || images[0]}
+            src={`/images/${activeImage || images[0]}`}
             alt="Enlarged Image"
             sx={{ width: '100%', height: 'auto' }}
           />
