@@ -23,11 +23,11 @@ const AddToCart = ({ addToCart, unit }) => {
             borderRadius: 0,
           },
           '& input[type=number]': {
-            '-moz-appearance': 'textfield',
+            MozAppearance: 'textfield',
           },
           '& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button':
             {
-              '-webkit-appearance': 'none',
+              WebkitAppearance: 'none',
               margin: 0,
             },
         }}

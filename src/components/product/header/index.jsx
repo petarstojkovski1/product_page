@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import SvgIcon from '@mui/material/SvgIcon';
 import Grid from '@mui/material/Grid2';
+import Tooltip from '@mui/material/Tooltip';
 
 import { getCart } from '../../../store/cart/cartSlice';
 import { getFavorites, setFavorite } from '../../../store/user/userSlice';
@@ -27,6 +28,7 @@ const Header = ({
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const totalItems = useSelector((state) => state.cart.totalItems);
+  const totalCost = useSelector((state) => state.cart.totalCost);
   const loading = useSelector((state) => state.cart.loading);
   const favorites = useSelector((state) => state.user.favorites);
   const dispatch = useDispatch();
@@ -126,44 +128,46 @@ const Header = ({
               </Box>
             </Grid>
           </Grid>
-          <Box
-            position="relative"
-            display="flex"
-            alignItems="center"
-            borderLeft="1px solid #e0e0e0"
-            pl={2}
-          >
-            <SvgIcon
-              component={cartIcon}
-              inheritViewBox
-              sx={(theme) => ({
-                color: theme.palette.secondary.main,
-                width: '25px',
-              })}
-            />
-            {totalItems > 0 ? (
-              <Box
-                position="absolute"
-                top={0}
-                right={-5}
-                bgcolor="red"
-                borderRadius="50%"
-                width="16px"
-                height="16px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
-                {!loading ? (
-                  <Typography variant="caption" color="white" fontSize="10px">
-                    {totalItems}
-                  </Typography>
-                ) : (
-                  <CircularProgress size={10} color="white" />
-                )}
-              </Box>
-            ) : null}
-          </Box>
+          <Tooltip title={`Total cost is: ${Number(totalCost).toFixed(2)}`}>
+            <Box
+              position="relative"
+              display="flex"
+              alignItems="center"
+              borderLeft="1px solid #e0e0e0"
+              pl={2}
+            >
+              <SvgIcon
+                component={cartIcon}
+                inheritViewBox
+                sx={(theme) => ({
+                  color: theme.palette.secondary.main,
+                  width: '25px',
+                })}
+              />
+              {totalItems > 0 ? (
+                <Box
+                  position="absolute"
+                  top={0}
+                  right={-5}
+                  bgcolor="red"
+                  borderRadius="50%"
+                  width="16px"
+                  height="16px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {!loading ? (
+                    <Typography variant="caption" color="white" fontSize="10px">
+                      {totalItems}
+                    </Typography>
+                  ) : (
+                    <CircularProgress size={10} color="white" />
+                  )}
+                </Box>
+              ) : null}
+            </Box>
+          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>

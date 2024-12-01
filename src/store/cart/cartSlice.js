@@ -23,8 +23,8 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCart.fulfilled, (state, action) => {
-        state.totalItems = action.payload.totalItems;
-        state.totalCost = action.payload.totalCost;
+        state.totalItems = action.payload.items;
+        state.totalCost = action.payload.total_costs;
         state.loading = false;
       })
       .addCase(addToCart.pending, (state) => {
